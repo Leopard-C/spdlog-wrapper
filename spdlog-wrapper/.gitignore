@@ -1,0 +1,7 @@
+build
+bin
+lib/linux/libspdlog_wrapper.a
+lib/windows/**/spdlog_wrapper.lib
+logs
+win-vsproj/build
+win-vsproj/.vs
