@@ -1,5 +1,5 @@
-#include "logger_config.h"
-#include "simple_console_logger.h"
+#include "log/logger_config.h"
+#include "log/simple_console_logger.h"
 #include "ini.h"
 #include "util.h"
 
