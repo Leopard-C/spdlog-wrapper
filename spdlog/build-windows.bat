@@ -12,6 +12,10 @@ REM set VS_VERSION="Visual Studio 17 2022"
 
 if not exist "%VS%\Win32" (md "%VS%\Win32")
 if not exist "%VS%\x64"   (md "%VS%\x64")
+if not exist "%OUT_LIBDIR%\Win32\Debug" (md "%OUT_LIBDIR%\Win32\Debug")
+if not exist "%OUT_LIBDIR%\Win32\Release" (md "%OUT_LIBDIR%\Win32\Release")
+if not exist "%OUT_LIBDIR%\x64\Debug" (md "%OUT_LIBDIR%\x64\Debug")
+if not exist "%OUT_LIBDIR%\x64\Release" (md "%OUT_LIBDIR%\x64\Release")
 
 echo =================================================
 echo ==                                             ==
