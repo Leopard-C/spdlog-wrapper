@@ -1,6 +1,5 @@
+.vs
 build
 bin
 lib
 logs
-win-vsproj/build
-win-vsproj/.vs
