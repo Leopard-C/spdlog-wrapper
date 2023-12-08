@@ -8,8 +8,6 @@ LIBS = -L./lib/linux -lspdlog_wrapper -lspdlog -lpthread
 SPDLOG_LIB = ../spdlog/build/libspdlog.a
 
 FLAGS = -O3 --std=c++11
-RED := \033[0;31m
-NC := \033[0m
 
 all: bin/example.out lib/linux/libspdlog_wrapper.a
 
@@ -18,7 +16,11 @@ bin/example.out: example/main.cpp lib/linux/libspdlog_wrapper.a
         cp $(SPDLOG_LIB) ./lib/linux; \
         echo "Copy file $(SPDLOG_LIB) to ./lib/linux"; \
     else \
-        echo "$(RED)File $(SPDLOG_LIB) is not exist, please build libspdlog first!$(NC)"; \
+        echo "\033[0;31m============================================================="; \
+        echo "File $(SPDLOG_LIB) is not exist."; \
+        echo "Please execute commands below to build libspdlog first:"; \
+        echo "  cd ../spdlog && ./build-linux.sh && cd -"; \
+        echo "=============================================================\033[0m"; \
         exit 1; \
     fi
 	g++ $(INCS) $(FLAGS) -o $@ example/main.cpp $(LIBS)
