@@ -3,6 +3,9 @@ $(shell if [ ! -e bin ]; then mkdir bin; fi)
 $(shell if [ ! -e build ]; then mkdir build; fi)
 $(shell if [ ! -e lib/linux ]; then mkdir -p lib/linux; fi)
 
+CC ?= g++
+AR ?= ar
+
 INCS = -I../spdlog/include -I./include
 LIBS = -L./lib/linux -lspdlog_wrapper -lspdlog -lpthread
 SPDLOG_LIB = ../spdlog/build/libspdlog.a
@@ -23,13 +26,13 @@ bin/example.out: example/main.cpp lib/linux/libspdlog_wrapper.a
         echo "=============================================================\033[0m"; \
         exit 1; \
     fi
-	g++ $(INCS) $(FLAGS) -o $@ example/main.cpp $(LIBS)
+	$(CC) $(INCS) $(FLAGS) -o $@ example/main.cpp $(LIBS)
 
 lib/linux/libspdlog_wrapper.a: build/logger.o build/logger_config.o build/util.o build/ini.o
-	ar crv $@ $^
+	$(AR) crv $@ $^
 
 build/%.o: src/log/%.cpp
-	g++ -c $(INCS) -I./include/log $(FLAGS) -o $@ $^
+	$(CC) -c $(INCS) -I./include/log $(FLAGS) -o $@ $^
 
 .PHONY: clean
 clean:

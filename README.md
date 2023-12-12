@@ -105,14 +105,25 @@ max_file_size = 5M
 
 ```shell
 cd spdlog
+
+# x86_64
 ./build-linux.sh
+
+# aarch64 (arm64)
+# 自行修改 spdlog/cmake/toolchain.aarch64.cmake 中的配置
+./build-linux.sh aarch64
 ```
 
 (b) 编译`spdlog-wrapper`
 
 ```shell
 cd spdlog-wrapper
+
+# x86_64
 make
+
+# aarch64 (arm64)
+make CC=aarch64-linux-gnu-g++ AR=aarch64-linux-gnu-ar
 ```
 
 得到静态库:
